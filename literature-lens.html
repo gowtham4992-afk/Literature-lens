@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ta" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Literature Lens</title>
+  <meta name="description" content="Literature Lens is a bilingual Tamil-English academic blog for Tamil book reviews, Bharathiar University notes, and student study resources." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.9rem, 0.82rem + 0.3vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.15rem, 1rem + 0.6vw, 1.45rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.1vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.4rem + 2vw, 3.5rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem;
+      --color-bg: #f7f4f5;
+      --color-surface: #ffffff;
+      --color-surface-2: #fcf8fa;
+      --color-surface-offset: #efe8ec;
+      --color-border: rgba(48, 28, 39, 0.12);
+      --color-text: #23181f;
+      --color-text-muted: #66555f;
+      --color-text-faint: #93828c;
+      --color-primary: #9d2b83;
+      --color-secondary: #e95738;
+      --color-accent-deep: #5b183f;
+      --color-primary-soft: rgba(157, 43, 131, 0.09);
+      --color-inverse: #fffafd;
+      --radius-sm: 0.45rem; --radius-md: 0.8rem; --radius-lg: 1.1rem; --radius-xl: 1.5rem; --radius-full: 999px;
+      --shadow-sm: 0 1px 2px rgba(35,24,31,0.05), 0 10px 24px rgba(35,24,31,0.04);
+      --shadow-md: 0 20px 44px rgba(35,24,31,0.1);
+      --font-display: 'Noto Serif Tamil', serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --content: 1180px;
+      --transition: 180ms cubic-bezier(0.16,1,0.3,1);
+      --header-gradient: linear-gradient(110deg, #8a239f 0%, #b12b7a 45%, #e95738 100%);
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #171116;
+      --color-surface: #211922;
+      --color-surface-2: #291f2a;
+      --color-surface-offset: #332735;
+      --color-border: rgba(255,255,255,0.1);
+      --color-text: #f5eaf0;
+      --color-text-muted: #ceb8c4;
+      --color-text-faint: #9d8c96;
+      --color-primary: #df72c4;
+      --color-secondary: #ff8b6e;
+      --color-accent-deep: #f0bfd5;
+      --color-primary-soft: rgba(223,114,196,0.12);
+      --color-inverse: #171116;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.24), 0 12px 30px rgba(0,0,0,0.2);
+      --shadow-md: 0 24px 46px rgba(0,0,0,0.34);
+      --header-gradient: linear-gradient(110deg, #6f178d 0%, #9a235a 48%, #d95b26 100%);
+    }
+
+    * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh; background: var(--color-bg); color: var(--color-text);
+      font-family: var(--font-body); font-size: var(--text-base); line-height: 1.65;
+    }
+    img, svg { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+    input, textarea { font: inherit; }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+    .skip-link {
+      position: absolute; left: -999px; top: var(--space-3); z-index: 999;
+      background: var(--color-primary); color: white; padding: var(--space-3) var(--space-4); border-radius: var(--radius-full);
+    }
+    .skip-link:focus { left: var(--space-3); }
+    .container { width: min(calc(100% - 2rem), var(--content)); margin-inline: auto; }
+
+    .topbar {
+      background: color-mix(in srgb, var(--color-surface) 82%, transparent);
+      border-bottom: 1px solid var(--color-border);
+      backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 50;
+    }
+    .topbar-inner {
+      min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+    }
+    .brand { display: flex; align-items: center; gap: var(--space-3); font-weight: 800; }
+    .logo {
+      width: 44px; height: 44px; color: white; border-radius: 15px; padding: 8px; background: var(--header-gradient); box-shadow: var(--shadow-sm);
+    }
+    .brand strong { display: block; }
+    .brand small { display: block; color: var(--color-text-faint); font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav { display: flex; align-items: center; gap: var(--space-5); }
+    .nav a { color: var(--color-text-muted); font-size: var(--text-sm); font-weight: 600; }
+    .nav a:hover { color: var(--color-text); }
+    .theme-toggle {
+      width: 46px; height: 46px; display: inline-grid; place-items: center; border-radius: var(--radius-full);
+      border: 1px solid var(--color-border); background: var(--color-surface); transition: transform var(--transition), background var(--transition);
+    }
+    .theme-toggle:hover { transform: translateY(-2px); background: var(--color-surface-2); }
+
+    .hero-band {
+      margin-top: var(--space-5); background: var(--header-gradient); color: white; border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+      box-shadow: var(--shadow-md); overflow: hidden;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.25fr 0.75fr; gap: var(--space-8); align-items: center; padding: clamp(var(--space-10), 6vw, 4.75rem);
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: var(--space-2); background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius-full); padding: 0.5rem 0.95rem; font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--space-5);
+    }
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; }
+    h1 { font-size: var(--text-2xl); margin-bottom: var(--space-3); max-width: 12ch; }
+    .tagline { font-size: var(--text-lg); color: rgba(255,255,255,0.94); margin-bottom: var(--space-4); }
+    .hero-copy p { max-width: 62ch; color: rgba(255,255,255,0.88); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+    .btn {
+      min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: 0.9rem 1.2rem;
+      border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 700; transition: transform var(--transition), background var(--transition), color var(--transition);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-light { background: white; color: var(--color-accent-deep); }
+    .btn-ghost { background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.22); }
+
+    .hero-card {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18); border-radius: var(--radius-xl); padding: var(--space-6); backdrop-filter: blur(12px);
+    }
+    .hero-card p { color: rgba(255,255,255,0.84); }
+    .metric-list { display: grid; gap: var(--space-4); margin-top: var(--space-4); }
+    .metric {
+      display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--space-3); border-bottom: 1px solid rgba(255,255,255,0.16);
+    }
+    .metric:last-child { border-bottom: 0; padding-bottom: 0; }
+    .metric strong { font-size: var(--text-lg); font-family: var(--font-body); }
+
+    .section { padding: clamp(var(--space-10), 7vw, var(--space-16)) 0; }
+    .section-head { margin-bottom: var(--space-8); max-width: 68ch; }
+    .section-head h2 { font-size: var(--text-xl); margin-bottom: var(--space-3); }
+    .section-head p { color: var(--color-text-muted); }
+
+    .overview-grid, .two-col, .cards, .review-grid { display: grid; gap: var(--space-5); }
+    .overview-grid { grid-template-columns: repeat(3, 1fr); }
+    .two-col { grid-template-columns: 1fr 1fr; }
+    .cards { grid-template-columns: repeat(3, 1fr); }
+    .review-grid { grid-template-columns: 0.95fr 1.05fr; }
+
+    .card {
+      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-6); box-shadow: var(--shadow-sm);
+    }
+    .card h3 { font-size: var(--text-lg); margin-bottom: var(--space-3); }
+    .card p { color: var(--color-text-muted); }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.45rem 0.85rem; border-radius: var(--radius-full); background: var(--color-primary-soft);
+      color: var(--color-primary); font-weight: 700; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: var(--space-3);
+    }
+    .list { display: grid; gap: var(--space-3); margin-top: var(--space-4); }
+    .list li { list-style: none; display: flex; gap: var(--space-3); color: var(--color-text-muted); }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); margin-top: 0.55rem; flex: none; }
+
+    .nested-panel {
+      background: var(--color-surface-2); border: 1px solid var(--color-border); border-radius: calc(var(--radius-xl) - 0.35rem); padding: var(--space-5); margin-top: var(--space-4);
+    }
+    .subcard-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin-top: var(--space-4); }
+    .subcard { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-4); }
+    .subcard strong { display: block; margin-bottom: var(--space-2); }
+    .linkish { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: var(--space-3); color: var(--color-primary); font-weight: 700; font-size: var(--text-sm); }
+
+    .search-bar { display: flex; gap: var(--space-3); align-items: center; flex-wrap: wrap; margin-top: var(--space-5); }
+    .search-bar input {
+      flex: 1 1 280px; min-height: 52px; background: var(--color-surface); color: var(--color-text); border: 1px solid var(--color-border); border-radius: var(--radius-full); padding: 0 1rem;
+    }
+    .pill-row { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+    .pill {
+      padding: 0.55rem 0.9rem; border-radius: var(--radius-full); background: var(--color-surface-2); border: 1px solid var(--color-border); color: var(--color-text-muted); font-size: var(--text-sm); font-weight: 600;
+    }
+
+    .review-shell { background: linear-gradient(180deg, color-mix(in srgb, var(--color-primary-soft) 100%, transparent), transparent); }
+    .review-preview h3 { margin-bottom: var(--space-4); }
+    .review-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
+    .mini-tag {
+      display: inline-flex; padding: 0.45rem 0.7rem; border-radius: var(--radius-full); background: var(--color-surface); border: 1px solid var(--color-border); font-size: var(--text-xs); font-weight: 700; color: var(--color-text-muted);
+    }
+    .content-box { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-6); }
+    .content-box p + p { margin-top: var(--space-4); }
+
+    .footer { padding: var(--space-10) 0; color: var(--color-text-muted); }
+    .footer-inner { display: flex; justify-content: space-between; gap: var(--space-4); border-top: 1px solid var(--color-border); padding-top: var(--space-6); }
+
+    @media (max-width: 980px) {
+      .hero-grid, .overview-grid, .two-col, .cards, .review-grid, .subcard-grid { grid-template-columns: 1fr; }
+      .nav a { display: none; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(calc(100% - 1rem), var(--content)); }
+      .topbar-inner, .footer-inner { min-height: auto; flex-direction: column; align-items: flex-start; }
+      h1 { max-width: 10ch; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#home" class="brand" aria-label="Literature Lens home">
+        <svg class="logo" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M14 18h16c7 0 12 5 12 12v16H26c-7 0-12-5-12-12V18Zm18 6h18v22H32" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <strong>Literature Lens</strong>
+          <small>தமிழ் + English academic blog</small>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#notes">University Notes</a>
+        <a href="#reviews">புத்தக விமர்சனம்</a>
+        <a href="#features">Features</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero-band" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="hero-tag">Academic blog • Tamil review space</span>
+          <h1>Literature Lens</h1>
+          <p class="tagline">தமிழ் இலக்கியதில் பயணிக்க</p>
+          <p>
+            Tamil book review-um, Bharathiar University students-kana notes-um, bilingual academic reading space-a build panna indha blog design pannapattadhu. Professional academic feel irukkum; aana padikka easy-a, content add panna simple-a, and long-term use-ku neat-a organise panna mudiyum.
+          </p>
+          <div class="hero-actions">
+            <a href="#notes" class="btn btn-light">Open Notes</a>
+            <a href="#reviews" class="btn btn-ghost">View Reviews</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Site snapshot">
+          <p style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;">Planned structure</p>
+          <div class="metric-list">
+            <div class="metric"><span>Main focus</span><strong>தமிழ் Reviews</strong></div>
+            <div class="metric"><span>Student area</span><strong>BU Notes</strong></div>
+            <div class="metric"><span>Language</span><strong>Tamil + English</strong></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>About the blog</h2>
+          <p>Homepage and About section-la clear intro, purpose, category links, and readable text blocks irundha visitors-ku site use purinjukka easy-a irukkum-nu homepage best practices suggest pannudhu. [web:113][web:119][web:122]</p>
+        </div>
+        <div class="overview-grid">
+          <article class="card">
+            <span class="badge">About</span>
+            <h3>எழுத்து, ஆய்வு, குறிப்புகள்</h3>
+            <p>Literature Lens என்பது தமிழ் இலக்கியத்தை வாசிக்கவும், புரிந்துகொள்ளவும், பகிரவும் உருவாக்கப்பட்ட bilingual academic blog. இங்கு தமிழ் புத்தக விமர்சனங்கள், Bharathiar University notes, மற்றும் மாணவர்களுக்கு உதவும் சுருக்கமான பாட குறிப்புகள் ஒழுங்காக தொகுக்கப்படும்.</p>
+          </article>
+          <article class="card">
+            <span class="badge">Purpose</span>
+            <h3>Review + Notes space</h3>
+            <p>ஒரு பக்கம் புத்தகங்களைப் பற்றி சிந்தித்து எழுதும் இடமாகவும், இன்னொரு பக்கம் மாணவர்கள் தேடும் unit-wise notes கிடைக்கும் இடமாகவும் இந்த வலைப்பதிவு செயல்படும்.</p>
+          </article>
+          <article class="card">
+            <span class="badge">Style</span>
+            <h3>Professional academic feel</h3>
+            <p>Attached reference image-la irundha academic color mood inspire aayirundhaalum, similar-a copy pannaama softer contrast, cleaner spacing, and modern journal-style layout use pannirukken. [file:92]</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section-head">
+          <h2>Suggested categories</h2>
+          <p>Book blogs and content blogs-ku broad categories plus detailed tags use pannina content discover panna easy aagum-nu category guidance solludhu. [web:98]</p>
+        </div>
+        <div class="two-col">
+          <article class="card">
+            <h3>Main categories</h3>
+            <ul class="list" role="list">
+              <li><span class="dot"></span>Bharathiar University Notes</li>
+              <li><span class="dot"></span>புத்தக விமர்சனம்</li>
+              <li><span class="dot"></span>தமிழ் இலக்கியக் கருத்துகள்</li>
+              <li><span class="dot"></span>Study Tips</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Tags suggestion</h3>
+            <ul class="list" role="list">
+              <li><span class="dot"></span>Tamil 1, Tamil 3</li>
+              <li><span class="dot"></span>Poetry, Novel, Criticism</li>
+              <li><span class="dot"></span>Semester-wise, Unit-wise</li>
+              <li><span class="dot"></span>Quick notes, Long notes, Review</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="notes">
+      <div class="container">
+        <div class="section-head">
+          <h2>Bharathiar University Notes</h2>
+          <p>Readable headings, short blocks, and structured sections educational content-ku useful-nu writing guidance mention pannudhu. [web:99][web:113]</p>
+        </div>
+        <article class="card">
+          <span class="badge">Section structure</span>
+          <h3>University notes hub</h3>
+          <p>Indha main section-kulla Bharathiar University notes varum. Adhukkulla paper-wise pages and later unit-wise detailed notes maintain panna mudiyum.</p>
+
+          <div class="nested-panel">
+            <strong style="display:block; font-size: var(--text-lg); margin-bottom: var(--space-2);">தமிழ் papers</strong>
+            <p style="color: var(--color-text-muted);">Ippo neenga sonna first note titles base-aa starter entries add pannirukken.</p>
+            <div class="subcard-grid">
+              <div class="subcard">
+                <strong>Tamil 1</strong>
+                <p><b>First note:</b> எங்கள் தாய்</p>
+                <p>Unit explanation, important lines, exam points, and short summary add panna space.</p>
+                <a class="linkish" href="#">Open notes →</a>
+              </div>
+              <div class="subcard">
+                <strong>Tamil 3</strong>
+                <p><b>First note:</b> சிலப்பதிகாரம்</p>
+                <p>Historical background, theme notes, characters, and long-answer points add panna space.</p>
+                <a class="linkish" href="#">Open notes →</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section review-shell" id="reviews">
+      <div class="container review-grid">
+        <article class="card review-preview">
+          <span class="badge">Book review archive</span>
+          <h3>புத்தக விமர்சனம்</h3>
+          <p>Book review pages-la title, clear sections, recommendation cues, and easy scan structure useful-nu review-format sources suggest pannudhu. [web:114][web:117][web:120]</p>
+          <div class="search-bar">
+            <input type="search" placeholder="Search by book name or keyword" aria-label="Search reviews" />
+            <div class="pill-row">
+              <span class="pill">Novel</span>
+              <span class="pill">Poetry</span>
+              <span class="pill">Essay</span>
+              <span class="pill">Criticism</span>
+            </div>
+          </div>
+          <div class="nested-panel">
+            <strong style="display:block; margin-bottom: var(--space-3);">First review listing</strong>
+            <div class="subcard">
+              <strong>ஊர் கலைஞ்சு போச்சு</strong>
+              <p>Indha book-ku full review content later separate-a add panna ready-aana listing structure irukku.</p>
+              <a class="linkish" href="#review-content">Read review →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="content-box" id="review-content">
+          <div class="review-meta">
+            <span class="mini-tag">Book title page</span>
+            <span class="mini-tag">Tamil review</span>
+            <span class="mini-tag">Bilingual notes</span>
+          </div>
+          <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">ஊர் கலைஞ்சு போச்சு</h3>
+          <p>Indha review page-la later neenga book intro, author details, short summary, main analysis, language style, thematic reading, and final opinion add panna mudiyum. Review structure-la audience clarity, evaluation, and readable sectioning useful-nu sources explain pannudhu. [web:114][web:117]</p>
+          <p>Suggested review pattern: book name → author → short overview → content summary → literary analysis → personal response → who should read this book.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <h2>Special features I suggest</h2>
+          <p>Search, category paths, readable homepage sections, and clear navigation blogs-ku useful-nu design best practices solludhu. [web:93][web:96][web:119]</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>Smart content path</h3>
+            <p>Home → Bharathiar University Notes → Tamil 1 / Tamil 3 → individual notes nu simple path irukkum.</p>
+          </article>
+          <article class="card">
+            <h3>Review template</h3>
+            <p>Every book review-ku same format vechaa professional consistency maintain panna easy aagum.</p>
+          </article>
+          <article class="card">
+            <h3>Later expansion</h3>
+            <p>Contact details, additional books, more Tamil papers, and new sections apram easy-a add panna mudiyum.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Literature Lens • தமிழ் இலக்கியதில் பயணிக்க.</p>
+      <p>Contact details can be added later.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      const render = () => {
+        toggle.innerHTML = theme === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      };
+      render();
+      toggle.addEventListener('click', function () {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        render();
+      });
+    }());
+  </script>
+</body>
+</html>
